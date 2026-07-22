@@ -16,10 +16,15 @@
     font-family: 'Inter', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: 1.6;
+    overflow-x: hidden; /* Stress test: Prevents horizontal scroll caused by long header text */
 }
 
 a { text-decoration: none; color: inherit; }
@@ -49,8 +54,7 @@ header {
     font-size: 1.1rem;
 }
 
-.nav-brand img { border-radius: 4px; }
-
+.nav-brand img { border-radius: 4px; max-width: 40px; height: auto; }
 nav { display: flex; align-items: center; }
 
 /* --- Buttons --- */
@@ -70,6 +74,12 @@ nav { display: flex; align-items: center; }
 
 .btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
 .btn-outline:hover { background: var(--primary); color: var(--secondary); }
+
+/* Stress test: Accessibility focus states */
+a:focus-visible, .btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
 
 /* --- Hero Section --- */
 .hero {
@@ -160,10 +170,153 @@ footer {
     font-weight: 700;
 }
 
+.footer-brand img { max-width: 32px; height: auto; }
+
 .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
 .footer-links a:hover { color: var(--primary); }
 
 .copyright { font-size: 0.85rem; border-top: 1px solid var(--accent); padding-top: 1.5rem; width: 100%; }
+
+/* --- Features Section --- */
+.features-list {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first */
+    gap: 1.5rem;
+}
+
+.feature-item {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+.feature-item:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.feature-icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+.feature-item h4 { color: var(--secondary); margin-bottom: 0.5rem; font-size: 1.1rem; }
+.feature-item p { color: #555; font-size: 0.95rem; }
+
+/* --- How It Works (Steps) --- */
+.steps {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first */
+    gap: 1.5rem;
+}
+.step {
+    background: var(--accent);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+.step:hover { transform: translateY(-5px); border-color: var(--primary); }
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin: 0 auto 1.5rem auto;
+}
+.step h4 { color: var(--text-light); margin-bottom: 0.5rem; }
+.step p { color: var(--text-gray); font-size: 0.95rem; }
+
+/* --- Pricing & Use Cases (Split Layout) --- */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first */
+    gap: 2.5rem;
+    align-items: center;
+}
+.use-cases { display: flex; flex-direction: column; gap: 1.5rem; }
+.use-case {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.use-case h4 { color: var(--secondary); margin-bottom: 0.5rem; }
+.use-case p { color: #555; font-size: 0.95rem; }
+
+.pricing-card {
+    background: var(--secondary);
+    color: var(--text-light);
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--accent);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.pricing-card h3 { color: var(--text-light); margin-bottom: 1rem; }
+.price { 
+    font-size: 2.5rem; 
+    font-weight: 800; 
+    color: var(--primary); 
+    margin-bottom: 1rem; 
+    display: flex; 
+    align-items: baseline; 
+    justify-content: center; 
+    gap: 0.5rem; 
+    flex-wrap: wrap;
+}
+.price span { font-size: 1rem; font-weight: 400; color: var(--text-gray); }
+.pricing-card p { color: var(--text-gray); margin-bottom: 1.5rem; font-size: 0.95rem; }
+
+/* --- FAQ Section --- */
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.faq-item:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-color: #ddd; }
+.faq-item h4 { padding: 1.5rem; color: var(--secondary); font-size: 1.1rem; }
+.faq-item p { padding: 0 1.5rem 1.5rem 1.5rem; color: #555; font-size: 0.95rem; }
+
+/* --- Team Section --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile first */
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.team-member {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+.team-member:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.team-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem auto;
+    border: 3px solid var(--primary);
+}
+.team-member h4 { color: var(--secondary); margin-bottom: 0.25rem; }
+.team-member .role { color: var(--primary); font-weight: 600; display: block; margin-bottom: 1rem; font-size: 0.9rem; }
+.team-member p { color: #555; font-size: 0.95rem; }
+
+/* --- Social Icons Cleanup --- */
+.social-icons a { transition: 0.3s; display: inline-flex; }
+.social-icons a:hover { opacity: 0.7; transform: translateY(-2px); }
+
 
 /* --- Media Queries (Scaling Up) --- */
 @media (min-width: 600px) {
@@ -171,6 +324,11 @@ footer {
     .stats-grid { grid-template-columns: repeat(4, 1fr); }
     .footer-content { flex-direction: row; justify-content: space-between; text-align: left; flex-wrap: wrap; }
     .copyright { width: 100%; text-align: center; }
+    
+    /* New sections responsive */
+    .features-list { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 900px) {
@@ -187,6 +345,11 @@ footer {
     .card.highlight { grid-column: span 2; display: flex; }
     .card.highlight .card-img { width: 50%; height: auto; }
     .card.highlight .card-body { width: 50%; display: flex; flex-direction: column; justify-content: center; }
+
+    /* New sections responsive */
+    .features-list { grid-template-columns: repeat(3, 1fr); }
+    .steps { grid-template-columns: repeat(4, 1fr); }
+    .split-layout { grid-template-columns: 1.5fr 1fr; gap: 3rem; }
 }
 
 @media (min-width: 1200px) {
@@ -194,4 +357,21 @@ footer {
         grid-template-columns: repeat(4, 1fr);
     }
     .card.highlight { grid-column: span 4; flex-direction: row; }
+    .features-list { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* --- Mobile Stress Test Override --- */
+/* Prevents horizontal scrolling on very small screens caused by inline nowrap on header */
+@media (max-width: 480px) {
+    .nav-brand {
+        white-space: normal !important;
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    .nav-brand img {
+        width: 32px;
+        flex-shrink: 0;
+    }
+    .hero h1 { font-size: 2rem; }
+    .price { font-size: 2rem; }
 }
