@@ -371,28 +371,14 @@ footer {
     .grid-cards {
         grid-template-columns: repeat(2, 1fr);
     }
-    /* Make Trashless Tech span full width on desktop */
-    .card.highlight { grid-column: span 2; flex-direction: row; }
-    .card.highlight .card-img { 
-        width: 50%; 
-        height: auto; 
-        min-height: 300px; 
-    }
-    .card.highlight .card-body { 
-        width: 50%; 
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-    }
 
     .split-layout { grid-template-columns: 1.5fr 1fr; gap: 3rem; }
 }
 
 @media (min-width: 1200px) {
     .grid-cards {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr); /* Puts all 4 cards on the same row */
     }
-    .card.highlight { grid-column: span 4; }
 }
 
 /* --- Mobile Stress Test Override --- */
