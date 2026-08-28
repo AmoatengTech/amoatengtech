@@ -1,0 +1,59 @@
+/* ============================================================
+   age-toddler.css
+   Overrides applied when <html data-age="toddler">.
+   Keeps CSS variable overrides in variables.css; this file
+   handles structural tweaks (hide labels, simplify grids).
+   Toddler mode: simpler toolbars, fewer colors shown.
+   ============================================================ */
+
+[data-age="toddler"] .activity-tab__label { display: none; }
+[data-age="toddler"] .toolbar__heading { display: none; }
+[data-age="toddler"] .btn__label { display: none; }
+[data-age="toddler"] .appbar__parent-label { display: none; }
+
+/* Toddler: bigger icons in tabs */
+[data-age="toddler"] .activity-tab__icon { font-size: 2.5rem; }
+[data-age="toddler"] .animal-pick__btn [aria-hidden="true"],
+[data-age="toddler"] .tool-pick__btn [aria-hidden="true"],
+[data-age="toddler"] .category-pick__btn [aria-hidden="true"] {
+  font-size: 2.5rem;
+}
+
+/* Toddler: 3-column color grid (bigger swatches) */
+[data-age="toddler"] .color-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Toddler: keep swatches big even though kid mode shrunk them */
+[data-age="toddler"] .color-swatch {
+  min-width: var(--size-tap-min);
+  min-height: var(--size-tap-min);
+}
+
+/* Toddler: hide sticker category picker (just show one big happy grid).
+   The category picker stays in the DOM so JS can still drive it, but
+   we collapse it visually. */
+[data-age="toddler"] [data-toolbar="categories"] {
+  display: none;
+}
+
+/* Toddler: hide the music mute toggle (sound is always on) */
+[data-age="toddler"] [data-music-mute] {
+  display: none;
+}
+
+/* Toddler: simplify savebar copy */
+[data-age="toddler"] .btn--save .btn__label::before {
+  content: "Save picture";
+}
+[data-age="toddler"] .btn--save .btn__label {
+  font-size: 0; /* hide original text */
+}
+[data-age="toddler"] .btn--save .btn__label::before {
+  font-size: 1.15rem;
+}
+
+/* Toddler: hide eraser in free draw (too confusing) */
+[data-age="toddler"] [data-freedraw-tool="eraser"] {
+  display: none;
+}
