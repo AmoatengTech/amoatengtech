@@ -1,319 +1,432 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amoateng Technologies Limited | Keep Moving Forward</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="ef106f9e-76e2-4b56-81e4-03a5aecfb6e2"></script>
+<html lang="en-GB"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColourInBook: Free Colouring, Drawing &amp; Music Fun for Kids Ages 2 to 9</title>
+  <meta name="description" content="ColourInBook is a free, ad-free creative app for children aged 2 to 9: colour 23 friendly animal outlines, draw freely, play with stickers and paint with music. No sign-up, no data collection, works offline. A software product of Amoateng Technologies Limited.">
+  <link rel="canonical" href="https://www.amoatengtech.com/colourinbook/">
+  <meta name="theme-color" content="#ffd84d">
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ColourInBook: Free Colouring, Drawing &amp; Music Fun for Kids">
+  <meta property="og:description" content="Four creative activities for ages 2 to 9. 100% free, no ads, no sign-up. Playable right in your browser.">
+  <meta property="og:url" content="https://www.amoatengtech.com/colourinbook/">
+  <meta property="og:image" content="images/showcase-colouring-desktop.png">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ffd84d' stroke='%232d2a32' stroke-width='4'/%3E%3Ccircle cx='22' cy='24' r='5' fill='%23ff6b6b'/%3E%3Ccircle cx='38' cy='20' r='5' fill='%234ecdc4'/%3E%3Ccircle cx='44' cy='36' r='5' fill='%236aa9ff'/%3E%3Ccircle cx='28' cy='42' r='5' fill='%23ff9f43'/%3E%3C/svg%3E">
+
+  <!-- Same typefaces as the app (base.css), with system fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&amp;family=Fredoka:wght@400;500;600;700&amp;display=swap">
+
+  <!-- Layout grid: vendored Bootstrap 5.3.3 grid (MIT). Everything else is
+       hand-rolled in the app's own visual language. -->
+  <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="css/landing.css">
 </head>
 <body>
 
-    <!-- Navigation -->
-    <header>
-        <!-- Added white-space: nowrap to prevent text from breaking into 2 lines -->
-        <a href="index.html" class="nav-brand" style="white-space: nowrap;">
-            <img src="assets/images/Amoateng-Technologies-Limited-logo.png" alt="Amoateng Tech Logo">
-            <span>Amoateng Technologies Limited</span>
-        </a>
-    </header>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Keep Moving Forward.<br><span class="highlight">Innovating for a Sustainable Future.</span></h1>
-            <p>From e-waste recovery to advanced data visualization, Amoateng Technologies builds multi-vertical solutions addressing global challenges through rigorous engineering and responsible stewardship.</p>
+  <!-- ================= HEADER / NAV ================= -->
+  <header class="site-header" id="top">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a class="brand" href="#top">
+        <span class="brand-icon" aria-hidden="true">🎨</span> ColourInBook
+      </a>
+
+      <ul class="main-links" id="main-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#ages">Ages &amp; Modes</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li class="nav-cta d-lg-none"><a class="btn btn-coral btn-sm" href="app/">▶ Play free</a></li>
+      </ul>
+
+      <div class="nav-cta d-none d-lg-flex">
+        <a class="btn btn-coral btn-sm" href="app/">▶ Play free</a>
+      </div>
+
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-links" data-nav-toggle="">
+        <span aria-hidden="true">☰</span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <p class="hero-badge">✨ 100% Free · No ads · No sign-up</p>
+            <h1>Colouring, drawing &amp; music fun for kids <span class="squiggle">2 to 9</span></h1>
+            <p class="lead">ColourInBook turns your browser into a joyful art studio: friendly animal outlines to colour, a free-draw canvas, oodles of stickers and a magical paint mode where every colour plays its own note.</p>
             <div class="hero-ctas">
-                <a href="https://youtu.be/zaSPxxbbs-M" target="_blank" class="btn btn-primary">Watch Demo</a>
-                <a href="#products" class="btn btn-outline">Explore Our Portfolio</a>
+              <a class="btn btn-coral btn-lg" href="app/">▶ Play ColourInBook</a>
+              <a class="btn btn-ghost btn-lg" href="#features">See what's inside</a>
             </div>
+            <p class="hero-trust">Plays right in your browser · Nothing to install · Nothing collected</p>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-demo">
+              <div class="phone-frame">
+                <img src="images/showcase-colouring-mobile.png" alt="Screenshot of ColourInBook on a phone: a cat outline partly painted with bright colour dabs" width="375" height="740">
+              </div>
+              <p class="demo-hint"><span class="wave" aria-hidden="true">👆</span> ColourInBook in action. Press Play and have a go!</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Products Overview -->
-    <section id="products" class="container">
-        <div class="section-header">
-            <h2>Our Technology Portfolio</h2>
-            <p>Four integrated service lines driving sustainability, healthcare, and data innovation.</p>
+    <!-- ================= FEATURES ================= -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What's inside</span>
+          <h2>Four creative activities, one happy place</h2>
+          <p>Every activity is designed for little hands: big buttons, friendly shapes and no wrong answers.</p>
         </div>
-        <div class="grid-cards">
-            <div class="card highlight">
-                <img src="assets/images/Trashless-Tech-logo.png" alt="Trashless Tech Logo" class="card-img">
-                <div class="card-body">
-                    <h3>Trashless Tech</h3>
-                    <p>Our primary focus. A sustainable e-waste recycling solution dedicated to safe collection, processing, and material recovery (gold, copper) using certified safe practices.</p>
-                </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <span class="feature-emoji tint-yellow" aria-hidden="true">🖍️</span>
+              <h3>Colouring</h3>
+              <p>23 friendly animal outlines, from Giraffe and Fish to Penguin and Butterfly. Tap to dab colour inside or swirl it all around the background.</p>
             </div>
-            <div class="card">
-                <img src="assets/images/Datum-Insights-logo.png" alt="Datum Insights Logo" class="card-img">
-                <div class="card-body">
-                    <h3>Datum Insights</h3>
-                    <p>Advanced data visualization and actionable reporting platform to track carbon footprint reduction and circular economy impact.</p>
-                </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <span class="feature-emoji tint-pink" aria-hidden="true">✏️</span>
+              <h3>Free Draw</h3>
+              <p>A big blank canvas, 12 cheerful colours and a chunky brush. Mistakes are never scary because the eraser and undo button are always one tap away.</p>
             </div>
-            <div class="card">
-                <img src="assets/images/Datum-Research-and-Development-logo.png" alt="Datum R&D Logo" class="card-img">
-                <div class="card-body">
-                    <h3>Datum Research & Development</h3>
-                    <p>Research and development division focused on hardware engineering and optimizing material recovery rates for electronics.</p>
-                </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <span class="feature-emoji tint-teal" aria-hidden="true">⭐</span>
+              <h3>Stickers</h3>
+              <p>Four sticker books: Animals, Food, Nature and Fun. Tap to place, drag to rearrange, and build a collage worthy of the fridge door.</p>
             </div>
-            <div class="card">
-                <img src="assets/images/VetCare-logo.png" alt="VetCare Logo" class="card-img">
-                <div class="card-body">
-                    <h3>VetCare</h3>
-                    <p>A digital veterinary marketplace platform designed to streamline animal healthcare services and provider networks.</p>
-                </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <span class="feature-emoji tint-sky" aria-hidden="true">🎵</span>
+              <h3>Music Paint</h3>
+              <p>Every colour plays its own piano note as you paint, so a masterpiece becomes a song. A gentle first step into music for tiny composers.</p>
             </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <span class="feature-emoji tint-orange" aria-hidden="true">📴</span>
+              <h3>Offline-friendly</h3>
+              <p>Once the page has loaded, the fun keeps going without internet, which is perfect for tablets on long car journeys and aeroplane tray tables.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card">
+              <span class="feature-emoji tint-mint" aria-hidden="true">👪</span>
+              <h3>Parent Corner</h3>
+              <p>Age modes sized for little fingers, a print button for colouring sheets, and none of the nasty surprises: no ads, no tracking, no in-app purchases.</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Key Features & Benefits -->
-    <section id="features" class="bg-gray">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why Choose Our Solutions?</h2>
-                <p>Core differentiators that make our technology a revenue-generating model rather than a cost center.</p>
-            </div>
-            <div class="features-list">
-                <div class="feature-item">
-                    <span class="feature-icon">♻️</span>
-                    <h4>Safe Material Recovery</h4>
-                    <p>Extracts precious metals while neutralizing hazardous components to prevent toxic leakage.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">📉</span>
-                    <h4>Cost-Effective Model</h4>
-                    <p>Recovered materials offset processing costs, reducing net expenses for clients.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🔧</span>
-                    <h4>Low Infrastructure Needs</h4>
-                    <p>Rapid deployment in semi-industrial settings with minimal power demands.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">📊</span>
-                    <h4>Actionable Data Insights</h4>
-                    <p>Captures granular data on waste intake and recovery, exportable for ESG reporting.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">🛡️</span>
-                    <h4>Zero Toxic Exposure</h4>
-                    <p>Rigorous safety protocols ensure zero hazardous leakage for operators.</p>
-                </div>
-            </div>
+    <!-- ================= SCREENSHOTS ================= -->
+    <section class="section section-soft" id="screenshots">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Screenshots</span>
+          <h2>See it in action</h2>
+          <p>Real captures from the app, nothing mocked up.</p>
         </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <figure class="shot-card mb-0">
+              <img src="images/showcase-colouring-desktop.png" alt="ColourInBook colouring activity on a desktop screen: a giraffe outline being dabbed with orange, red, yellow and blue paint spots" loading="lazy">
+              <figcaption>Colouring on a big screen, where every dab lands inside the lines</figcaption>
+            </figure>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <figure class="shot-card mb-0">
+              <img src="images/showcase-colouring-mobile.png" alt="ColourInBook on a phone: a cat outline with pink paint spots, with the shape picker and colour palette below" loading="lazy">
+              <figcaption>Perfectly at home on a phone, where the whole animal always fits</figcaption>
+            </figure>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <figure class="shot-card mb-0">
+              <img src="images/showcase-stickers-tablet.png" alt="ColourInBook stickers activity on a tablet: lion, tiger, bear, panda, fox, octopus and bee stickers arranged on a canvas" loading="lazy">
+              <figcaption>Sticker collages on a tablet: tap to place, drag to move</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="bg-dark">
-        <div class="container">
-            <div class="section-header">
-                <h2>How It Works</h2>
-                <p>A proven, simple 4-step methodology for sustainable e-waste management.</p>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h4>Collection & Intake</h4>
-                    <p>We partner with local collectors and corporate IT asset managers to gather e-waste.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h4>Safe Processing</h4>
-                    <p>Using certified safety protocols, we manually process units with tech assistance.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h4>Material Recovery</h4>
-                    <p>Valuable metals are extracted, while hazardous materials are safely neutralized.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h4>Impact Reporting</h4>
-                    <p>We provide transparent data on tonnage diverted and carbon reduction.</p>
-                </div>
-            </div>
+    <!-- ================= AGES & MODES ================= -->
+    <section class="section" id="ages">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Ages &amp; modes</span>
+          <h2>Two modes that grow with your child</h2>
+          <p>Switch modes any time in the Parent Corner, and everything resizes for the age you pick.</p>
         </div>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="age-card toddler">
+              <div class="age-card-head">
+                <span class="age-emoji" aria-hidden="true">🧸</span>
+                <h3>Toddler <span class="age-tag">Ages 2 to 4</span></h3>
+              </div>
+              <ul>
+                <li><strong>6</strong> bright, high-contrast colours</li>
+                <li>Extra-large buttons and brushes</li>
+                <li>Simple shape picker with picture labels</li>
+                <li>Undo and eraser stay available so little artists can experiment freely</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="age-card kid">
+              <div class="age-card-head">
+                <span class="age-emoji" aria-hidden="true">🎨</span>
+                <h3>Kid <span class="age-tag">Ages 5 to 9</span></h3>
+              </div>
+              <ul>
+                <li><strong>12</strong> colours including gold, brown and white</li>
+                <li>All four activities unlocked</li>
+                <li>Adjustable brush and spot sizes</li>
+                <li>Two-finger pinch to zoom into fine details</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Key Stats -->
-    <section id="stats" class="container">
-        <div class="section-header">
-            <h2>Proven Impact</h2>
-            <p>Validated results from our Ghanaian operational prototype.</p>
+    <!-- ============================================================
+         PRICING: temporarily commented out.
+         ColourInBook is currently 100% free, so there is nothing to
+         price yet. This block (kept in AppVilla's canonical position,
+         after the showcase sections and before the team) can be
+         re-enabled by removing this comment marker pair.
+         ============================================================
+    <section class="section section-soft" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Pricing</span>
+          <h2>Simple, honest pricing</h2>
+          <p>One plan to start. More when the product grows.</p>
         </div>
-        <div class="stats-grid">
-            <div class="stat-box">
-                <h3>575 kg</h3>
-                <p>E-Waste Diverted</p>
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="feature-card text-center">
+              <span class="feature-emoji tint-yellow" aria-hidden="true">🎁</span>
+              <h3>Free Forever</h3>
+              <p>Everything in ColourInBook, free for everyone.</p>
+              <p class="price-amount">£0</p>
+              <a class="btn btn-coral" href="app/">Play now</a>
             </div>
-            <div class="stat-box">
-                <h3>30+</h3>
-                <p>PC Units Processed</p>
-            </div>
-            <div class="stat-box">
-                <h3>100%</h3>
-                <p>Safe Practice Rate</p>
-            </div>
-            <div class="stat-box">
-                <h3>15 Tons</h3>
-                <p>Annual CO2e Diversion Target</p>
-            </div>
+          </div>
         </div>
+      </div>
+    </section>
+    ============================================================ -->
+
+    <!-- ================= ABOUT THE MAKER ================= -->
+    <section class="about-strip" id="about">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <span class="eyebrow">About the maker</span>
+            <h2>ColourInBook is a software product of Amoateng Technologies Limited</h2>
+            <p>Amoateng Technologies builds multi-vertical solutions addressing global challenges through rigorous engineering and responsible stewardship, from e-waste recovery to advanced data visualisation. ColourInBook brings that same engineering care to children's creative play.</p>
+            <p class="motto">Keep Moving Forward.</p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a class="btn btn-yellow btn-lg" href="https://www.amoatengtech.com" target="_blank" rel="noopener">Visit amoatengtech.com</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Impact & Company Journey (Data Storytelling) -->
-    <section id="journey" class="bg-dark">
-        <div class="container">
-            <div class="section-header">
-                <h2>Impact & Company Journey</h2>
-            </div>
-            <div class="journey-content">
-                <p>Incorporated in June 2023 in Kumasi, Ghana, Amoateng Technologies Limited was founded on the ethos of "Keep Moving Forward." Our technical foundation was sharpened through our participation in the <strong>Y Combinator Build Sprint 2022</strong>, where our CEO honed rapid prototyping and scalable engineering practices.</p>
-                <br>
-                <p>In May 2026, our flagship e-waste initiative, Trashless Tech, was submitted to the <strong>Amazon Sustainability Pilot Program facilitated by MIT Solve</strong>. While we did not progress to Phase II of the challenge, the rigorous application process validated our technical model. The program's framework helped us refine our North American expansion strategy and solidify our commitment to ISO and R2 safety certifications.</p>
-                <br>
-                <p>Today, we continue to build independently. In the first 9 months of our internal pilot of Trashless Tech, we safely processed 30+ PC units, diverted 575 kg of waste from landfills, and recovered valuable materials with zero toxic exposure. This proven track record drives our mission to transform toxic landfill sites into resource recovery hubs globally.</p>
-            </div>
+    <!-- ================= TEAM ================= -->
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Leadership team</span>
+          <h2>The people behind the product</h2>
+          <p>Experts in software engineering, data research, and hardware systems.</p>
         </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-5">
+            <div class="team-card">
+              <img class="team-photo" src="images/ceo-samuel-oppong-amoateng.png" alt="Portrait of Samuel Oppong Amoateng" width="160" height="160" loading="lazy">
+              <h3>Samuel Oppong Amoateng</h3>
+              <span class="team-role">Chief Executive Officer</span>
+              <p>Leads software engineering and data research. Y Combinator Build Sprint 2022 alum and NVIDIA Developer Program member.</p>
+              <div class="social-links">
+                <a href="https://www.linkedin.com/in/soamoateng" target="_blank" rel="noopener" aria-label="Samuel Oppong Amoateng on LinkedIn">
+                  <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+                </a>
+                <a href="https://x.com/skdoamoateng" target="_blank" rel="noopener" aria-label="Samuel Oppong Amoateng on X">
+                  <svg viewBox="0 0 512 512" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/soamoateng" target="_blank" rel="noopener" aria-label="Samuel Oppong Amoateng on Instagram">
+                  <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-5">
+            <div class="team-card">
+              <img class="team-photo" src="images/cto-nathanael-oppong-amoateng.png" alt="Portrait of Nathanael Oppong Amoateng" width="160" height="160" loading="lazy">
+              <h3>Nathanael Oppong Amoateng</h3>
+              <span class="team-role">Chief Technology Officer</span>
+              <p>Technical Lead for electrical engineering and hardware systems with over 5 years of specialised experience in electronics.</p>
+              <div class="social-links">
+                <a href="https://www.linkedin.com/in/nathanael-oppong-amoateng-93667028s5k" target="_blank" rel="noopener" aria-label="Nathanael Oppong Amoateng on LinkedIn">
+                  <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg>
+                </a>
+                <a href="https://x.com/noamoateng" target="_blank" rel="noopener" aria-label="Nathanael Oppong Amoateng on X">
+                  <svg viewBox="0 0 512 512" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/noamoateng" target="_blank" rel="noopener" aria-label="Nathanael Oppong Amoateng on Instagram">
+                  <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Use Cases & Pricing -->
-    <section id="pricing" class="bg-gray">
-        <div class="container">
-            <div class="section-header">
-                <h2>Use Cases & Pricing</h2>
-                <p>Flexible solutions for high-tech hubs, corporate programs, and bulk collectors.</p>
-            </div>
-            <div class="split-layout">
-                <div class="use-cases">
-                    <div class="use-case">
-                        <h4>Corporate Sustainability Programs</h4>
-                        <p>Helps organizations retire old IT assets safely while generating ESG reports and offsetting disposal costs.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>Municipal E-Waste Programs</h4>
-                        <p>Prevents toxic leakage into soil and groundwater by formalizing e-waste collection for local governments.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>Bulk E-Waste Collectors</h4>
-                        <p>Processes high-volume streams efficiently, enabling collectors to scale operations with transparent data.</p>
-                    </div>
-                </div>
-                <div class="pricing-card">
-                    <h3>Pilot Phase Pricing</h3>
-                    <div class="price">GH¢8,000 <span>/ per ton</span></div>
-                    <p>Covers capital depreciation, labor, safety compliance, and logistics. Material recovery significantly offsets these costs.</p>
-                    <p><a href="#contact" class="btn btn-primary">Request Custom Quote</a></p>
-                </div>
-            </div>
+    <!-- ================= FAQ ================= -->
+    <section class="section section-soft" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Frequently asked questions</h2>
+          <p>Everything parents usually ask before the first doodle.</p>
         </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>Is ColourInBook really free?</summary>
+            <p class="faq-a">Yes, ColourInBook is currently 100% free. No ads, no in-app purchases, no sign-up and no credit card. Just open the page and play.</p>
+          </details>
+
+          <details>
+            <summary>Does it work offline?</summary>
+            <p class="faq-a">Yes. Once the page has loaded, all four activities keep working without an internet connection, so it is ideal for journeys and Wi-Fi-free afternoons.</p>
+          </details>
+
+          <details>
+            <summary>What ages is it for?</summary>
+            <p class="faq-a">Children aged 2 to 9. Toddler mode (2 to 4) offers six colours, extra-large buttons and picture labels; Kid mode (5 to 9) unlocks twelve colours, adjustable brush sizes and pinch-to-zoom.</p>
+          </details>
+
+          <details>
+            <summary>Where does my child's artwork go?</summary>
+            <p class="faq-a">Nowhere. ColourInBook collects no data and has no accounts. Work in progress is kept privately in your own browser, and pictures only leave the device when you tap "Save my picture" or "Print".</p>
+          </details>
+
+          <details>
+            <summary>Does it work on phones and tablets?</summary>
+            <p class="faq-a">Yes, ColourInBook is built mobile-first and adapts to phones, tablets, laptops and desktop screens, in portrait or landscape. All you need is a browser.</p>
+          </details>
+        </div>
+      </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="container">
-        <div class="section-header">
-            <h2>Frequently Asked Questions</h2>
-        </div>
-        <div class="faq-container">
-            <div class="faq-item">
-                <h4>What is your North American expansion plan?</h4>
-                <p>We are incorporating as the United States within 4-8 weeks. We plan to launch pilot programs in high-tech hubs like Austin, Seattle, San Francisco or Toronto within 2-3 months of incorporation.</p>
-            </div>
-            <div class="faq-item">
-                <h4>What materials do you process?</h4>
-                <p>We focus on desktop and laptop units, motherboards, and peripheral electronics. We recover precious metals while safely neutralizing hazardous components like batteries and CRTs.</p>
-            </div>
-            <div class="faq-item">
-                <h4>What certifications are you pursuing?</h4>
-                <p>We are pursuing ISO 14001 (Environmental), ISO 45001 (Health & Safety), and R2 (Responsible Recycling) certifications within the next 12 months.</p>
-            </div>
-            <div class="faq-item">
-                <h4>How does your pricing work?</h4>
-                <p>We charge GH¢8,000 per ton during the pilot phase. However, recovered metals offset processing costs, making it cheaper than standard hazardous waste disposal.</p>
-            </div>
-        </div>
+    <!-- ================= CTA BAND ================= -->
+    <section class="cta-band" id="play">
+      <div class="container">
+        <h2>Ready to create something wonderful?</h2>
+        <p>No download. No sign-up. Just tap and paint.</p>
+        <a class="btn btn-coral btn-lg" href="app/">▶ Play ColourInBook. It's free!</a>
+      </div>
     </section>
 
-    <!-- Team Highlights -->
-    <section id="team" class="bg-gray">
-        <div class="container">
-            <div class="section-header">
-                <h2>Leadership Team</h2>
-                <p>Experts in software engineering, data research, and hardware systems.</p>
-            </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="assets/images/soamoateng-image.png" alt="Picture of Samuel O. Amoateng">
-                    <h4>Samuel Oppong Amoateng</h4>
-                    <span class="role">Chief Executive Officer</span>
-                    <p>Leads software engineering and data research. Y Combinator Build Sprint 2022 alum and NVIDIA Developer Program member.</p>
-                    <!-- Social Icons -->
-                    <div class="social-icons" style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;">
-                        <a href="https://www.linkedin.com/in/soamoateng" style="color: var(--primary); font-size: 1.2rem;"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="https://x.com/skdoamoateng" style="color: var(--primary); font-size: 1.2rem;"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.instagram.com/soamoateng" style="color: var(--primary); font-size: 1.2rem;"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="team-member">
-           <img src="assets/images/noamoateng-image.png" alt="Picture of Nathanael O. Amoateng">
-                    <h4>Nathanael Oppong Amoateng</h4>
-                    <span class="role">Chief Technology Officer</span>
-                    <p>Technical Lead for electrical engineering and hardware systems with over 5 years of specialized experience in electronics.</p>
-                    <!-- Social Icons -->
-                    <div class="social-icons" style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;">
-                        <a href="https://www.linkedin.com/in/nathanael-oppong-amoateng-93667028s5k" style="color: var(--primary); font-size: 1.2rem;"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="https://x.com/noamoateng" style="color: var(--primary); font-size: 1.2rem;"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.instagram.com/noamoateng" style="color: var(--primary); font-size: 1.2rem;"><i class="fa-brands fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  </main>
 
-    <!-- Contact -->
-    <section id="contact" class="bg-dark">
-        <div class="container contact-area">
-            <h2>Partner With Us</h2>
-            <p>Whether you're looking to safely retire IT assets, build data visualizations, or explore our R&D capabilities, we are ready to collaborate.</p>
-            <a href="mailto:contact@amoatengtech.com" class="btn btn-primary">Get Started</a>
-            <p class="contact-details">Email: contact@amoatengtech.com</p>
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <p class="footer-brand"><span class="brand-icon" aria-hidden="true">🎨</span> ColourInBook</p>
+          <p class="footer-tagline">Colouring, drawing, stickers and music paint for kids ages 2 to 9. Free, friendly and ad-free.</p>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <img src="assets/images/Amoateng-Technologies-Limited-logo.png" alt="Amoateng Technologies Limited Logo">
-                <span>Amoateng Technologies Limited</span>
-            </div>
-            <div class="footer-links">
-                <a href="tos.html">Terms of Service</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="mailto:contact@amoatengtech.com">Contact</a>
-            </div>
-            <!-- Social Icons -->
-            <div class="social-icons" style="display: flex; gap: 1.5rem; font-size: 1.2rem;">
-                <a href="https://www.linkedin.com/company/amoatengtech" style="color: var(--text-gray);"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://x.com/amoatengtech" style="color: var(--text-gray);"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/amoatengtech" style="color: var(--text-gray);"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <p class="copyright">© 2023 - <span id="current-year"></span> Amoateng Technologies Limited. All rights reserved.</p>
+        <div class="col-6 col-lg-3">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="app/">Play ColourInBook</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#ages">Ages &amp; modes</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
         </div>
-    </footer>
 
-    <script src="js/script.js"></script>
-    <script data-goatcounter="https://amoatengtech.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-</body>
-</html>
+        <div class="col-6 col-lg-4">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="https://www.amoatengtech.com" target="_blank" rel="noopener">Amoateng Technologies Limited</a></li>
+            <li><a href="mailto:contact@amoatengtech.com">contact@amoatengtech.com</a></li>
+            <li><a href="#team">Leadership team</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 <strong>Amoateng Technologies Limited</strong>. ColourInBook is a software product of Amoateng Technologies Limited.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tiny progressive enhancement: mobile nav toggle. The page is fully
+    // usable without JavaScript (links remain reachable via the footer).
+    (function () {
+      var header = document.querySelector('.site-header');
+      var toggle = document.querySelector('[data-nav-toggle]');
+      if (!header || !toggle) return;
+      toggle.addEventListener('click', function () {
+        var open = header.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // Close the menu after choosing a section
+      document.querySelectorAll('.main-links a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          header.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+
+</body></html>

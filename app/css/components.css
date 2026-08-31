@@ -1,0 +1,590 @@
+/* ============================================================
+   components.css
+   Reusable UI components: buttons, color swatches, sliders,
+   tabs, toolbars, modals, toast.
+   DRY: each component defined once, used everywhere.
+   ============================================================ */
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--size-btn-h);
+  padding: 0 var(--size-btn-pad-x);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: var(--size-btn-font);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+  border: 3px solid transparent;
+}
+
+.btn:active { transform: scale(0.96); }
+.btn:disabled { opacity: 0.5; pointer-events: none; }
+
+.btn--primary {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary-dk);
+  box-shadow: 0 4px 0 var(--color-primary-dk);
+}
+.btn--primary:hover { background: var(--color-primary-dk); }
+.btn--primary:active { box-shadow: 0 2px 0 var(--color-primary-dk); transform: translateY(2px) scale(0.98); }
+
+/* Secondary buttons in toolbars: smaller than primary, more compact */
+.btn--secondary {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border-color: var(--color-toolbar-border);
+  box-shadow: 0 3px 0 #e6d6a0;
+  min-height: 48px;
+  padding: 0 var(--space-2);
+  font-size: 0.9rem;
+}
+.btn--secondary:hover { background: var(--color-bg-soft); }
+.btn--secondary:active { box-shadow: 0 1px 0 #e6d6a0; transform: translateY(2px) scale(0.98); }
+
+/* MOBILE-FIRST: full-width save button on phones; fixed-width on desktop */
+.btn--save {
+  width: 100%;
+  max-width: 360px;
+  font-size: 1.15rem;
+}
+@media (min-width: 800px) {
+  .btn--save {
+    width: auto;
+    min-width: 220px;
+  }
+}
+
+/* Print button shares the savebar row with Save (flex row already);
+   secondary styling keeps Save the visually primary action. */
+.btn--print {
+  flex: 1 1 auto;
+  max-width: 200px;
+  min-height: 48px;
+}
+@media (min-width: 800px) {
+  .btn--print {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 120px;
+  }
+}
+
+/* ---------- Activity tabs (top bar) ----------
+   Label visibility is owned by the age-mode files (age-toddler.css
+   hides labels; age-kid.css shows them), NOT here. All tabs carry
+   aria-label in HTML so icon-only states stay named for AT. */
+.activity-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-height: var(--size-tap-min);
+  min-width: var(--size-tap-min);
+  padding: var(--space-1) var(--space-1);
+  border-radius: var(--radius-md);
+  color: var(--color-ink-soft);
+  font-weight: 700;
+  border: 3px solid transparent;
+  transition: all var(--transition-fast);
+}
+.activity-tab__icon { font-size: 1.4rem; line-height: 1; }
+.activity-tab__label { font-size: 0.85rem; }
+
+@media (min-width: 600px) {
+  .activity-tab {
+    padding: var(--space-2) var(--space-3);
+  }
+  .activity-tab__icon { font-size: var(--size-icon); }
+}
+
+.activity-tab:hover { background: var(--color-bg-soft); }
+
+.activity-tab[aria-selected="true"] {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  border-color: var(--color-accent-dk);
+}
+
+/* ---------- Welcome age picker ---------- */
+.age-pick {
+  display: grid;
+  gap: var(--space-4);
+}
+.age-pick__btn, .age-pick {
+  /* base reset for both button and container */
+}
+
+.age-pick button.age-pick__btn,
+button.age-pick {
+  /* large welcome cards */
+}
+
+/* Welcome screen big cards (the .age-pick class is on the <button> directly) */
+button.age-pick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-4);
+  background: var(--color-surface);
+  border: 5px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 0 var(--color-accent-dk);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  min-height: 200px;
+}
+button.age-pick:hover { transform: translateY(-4px); box-shadow: 0 10px 0 var(--color-accent-dk); }
+button.age-pick:active { transform: translateY(2px); box-shadow: 0 3px 0 var(--color-accent-dk); }
+
+.age-pick__icon { font-size: 4rem; line-height: 1; }
+.age-pick__label { font-size: 1.5rem; font-weight: 800; color: var(--color-ink); }
+.age-pick__sub { font-size: 0.95rem; color: var(--color-ink-soft); }
+
+/* Inline age picker in parent modal */
+.age-pick--inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+.age-pick--inline .age-pick__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-2);
+  border: 3px solid var(--color-toolbar-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  min-height: var(--size-tap-min);
+  font-weight: 700;
+}
+.age-pick--inline .age-pick__btn:hover { background: var(--color-bg-soft); }
+.age-pick--inline .age-pick__btn.is-active {
+  border-color: var(--color-primary);
+  background: #fff0f0;
+}
+
+/* ---------- Toolbar ----------
+   NOTE: .toolbar, .toolbar__heading and .toolbar__group--actions
+   live in layout.css (single source of truth; they were
+   previously duplicated HERE, and the later cascade silently
+   overrode the mobile strip layout). Components.css only owns
+   button/swatch/grid components. */
+
+/* ---------- Color grid ---------- */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.color-swatch {
+  width: 100%;
+  aspect-ratio: 1;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: var(--radius-md);
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--color-toolbar-border);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+.color-swatch:hover { transform: scale(1.1); }
+.color-swatch:active { transform: scale(0.92); }
+.color-swatch.is-active {
+  box-shadow: 0 0 0 3px var(--color-ink), 0 0 0 6px var(--color-accent);
+  transform: scale(1.08);
+}
+
+/* DESKTOP SIDE-TOOLBAR FIT: the kid 6-column grid needs
+   6×min-width + 5×8px gaps ≤ 248px content box (280px toolbar
+   − 24px padding − 8px border). The old 40px minimum totaled 280px,
+   so the 6th column (Gold/White) was silently clipped 20px by
+   .toolbar overflow-x:hidden in coloring/freedraw/musicpaint.
+   34px keeps the documented 2-rows × 6-cols layout intact.
+   Toddler mode re-widens to 64px (higher specificity in
+   age-toddler.css), which now uses a 2-column grid anyway. */
+@media (min-width: 800px) {
+  .color-swatch {
+    min-width: 34px;
+    min-height: 34px;
+  }
+}
+
+/* ---------- Animal / tool / category pickers (shared style) ----------
+   MOBILE (toolbar strip): pickers flow as horizontally scrollable
+   single rows so a long shape list can never inflate the strip
+   height and crush the canvas. Desktop keeps multi-column grids.
+   The (max-height: 500px) arm extends the strip treatment to SHORT
+   desktop windows / split-screen, which use the narrow 200px side
+   toolbar (layout.css landscape layer); there the fixed grids
+   overflowed and were silently clipped by .toolbar overflow-x:hidden. */
+.animal-pick,
+.tool-pick,
+.category-pick {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+/* Animal picker: 3 animals → 3 columns single row.
+   (Historic selector: the picker class was renamed .shape-pick,
+   the live rule lives at the bottom of this file. Kept for
+   external/legacy gist HTML that may still use .animal-pick.) */
+.animal-pick {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* MOBILE strip: color swatches run in ONE horizontally scrollable
+   row (never 2 cramped rows). html[data-age] out-specifies the
+   age-mode .color-grid rules in age-toddler/age-kid.css so this
+   wins on phones regardless of stylesheet order.
+   (max-height: 500px) arm: same treatment for short desktop windows
+   using the 200px side toolbar; fixed 6-col grids spilled 96px there. */
+@media (max-width: 799px), (max-height: 500px) {
+  html[data-age] .color-grid {
+    grid-template-columns: none;
+    grid-template-rows: 1fr;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(48px, auto);
+    max-height: 72px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+  html[data-age] .color-grid::-webkit-scrollbar { display: none; }
+}
+
+.animal-pick__btn,
+.tool-pick__btn,
+.category-pick__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 3px solid var(--color-toolbar-border);
+  min-height: var(--size-tap-min);
+  transition: all var(--transition-fast);
+}
+.animal-pick__btn:hover,
+.tool-pick__btn:hover,
+.category-pick__btn:hover { background: var(--color-bg-soft); }
+
+.animal-pick__btn.is-active,
+.tool-pick__btn.is-active,
+.category-pick__btn.is-active {
+  border-color: var(--color-primary);
+  background: #fff0f0;
+  transform: scale(1.02);
+}
+
+.animal-pick__btn .animal-pick__name,
+.tool-pick__btn .tool-pick__name,
+.category-pick__btn .category-pick__name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.animal-pick__btn [aria-hidden="true"],
+.tool-pick__btn [aria-hidden="true"],
+.category-pick__btn [aria-hidden="true"] {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+/* ---------- Sticker grid ----------
+   MOBILE: 2 rows scrolling horizontally (never crushes canvas).
+   DESKTOP: original 4-column grid with y-scroll. */
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+@media (max-width: 799px), (max-height: 500px) {
+  .sticker-grid {
+    grid-template-columns: none;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(56px, auto);
+    max-height: 124px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+  .sticker-grid::-webkit-scrollbar { display: none; }
+}
+.sticker-grid__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  aspect-ratio: 1;
+  min-height: var(--size-tap-min);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 3px solid var(--color-toolbar-border);
+  transition: all var(--transition-fast);
+}
+.sticker-grid__btn:hover { transform: scale(1.1); background: var(--color-bg-soft); }
+.sticker-grid__btn:active { transform: scale(0.92); }
+
+/* ---------- Size slider ----------
+   MOBILE: fixed comfortable width inside the x-scroll strip.
+   DESKTOP: fills the vertical toolbar group. */
+.size-slider {
+  width: 150px;
+  height: 40px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.size-slider::-webkit-slider-runnable-track {
+  height: 16px;
+  background: var(--color-bg-soft);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+}
+.size-slider::-moz-range-track {
+  height: 16px;
+  background: var(--color-bg-soft);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+}
+.size-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  background: var(--color-primary);
+  border: 4px solid white;
+  border-radius: 50%;
+  margin-top: -12px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+.size-slider::-moz-range-thumb {
+  width: 36px;
+  height: 36px;
+  background: var(--color-primary);
+  border: 4px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+@media (min-width: 800px) {
+  .size-slider { width: 100%; }
+}
+
+/* MOBILE: icon-only action buttons inside the strip (labels
+   reappear on desktop; aria-labels in HTML keep them named).
+   Toddler mode hides ALL labels anyway (age-toddler.css). */
+@media (max-width: 799px) {
+  .toolbar__group--actions .btn__label { display: none; }
+}
+
+/* ---------- Modal ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3);
+  padding-left: max(var(--space-3), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-3), env(safe-area-inset-right, 0px));
+}
+.modal[hidden] { display: none; }
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.modal__card {
+  position: relative;
+  background: var(--color-surface);
+  border: 5px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  padding: var(--space-4);
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;        /* fallback for older browsers */
+  max-height: 90dvh;       /* mobile URL-bar aware */
+  overflow-y: auto;
+}
+
+@media (min-width: 800px) {
+  .modal { padding: var(--space-4); }
+  .modal__card { padding: var(--space-5); }
+}
+
+.modal__title {
+  font-size: 1.75rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.modal__section { margin-bottom: var(--space-4); }
+.modal__section h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-2);
+  color: var(--color-ink);
+}
+.modal__section p {
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.modal__hint {
+  font-size: 0.85rem;
+  color: var(--color-ink-mute);
+  margin-bottom: var(--space-2);
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  bottom: calc(var(--size-savebar-h) + var(--safe-bottom) + var(--space-4));
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--color-ink);
+  color: white;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  z-index: var(--z-toast);
+  transition: transform var(--transition-base);
+  pointer-events: none;
+  max-width: 90vw;
+  text-align: center;
+}
+.toast.is-visible {
+  transform: translateX(-50%) translateY(0);
+}
+/* display:none while hidden. showToast() un-hides, forces a
+   reflow, THEN adds .is-visible so the slide-up transition
+   still runs (the old display:block leaked an empty pill onto
+   the welcome screen on short viewports). */
+.toast[hidden] { display: none; }
+
+/* ---------- Shape picker (replaces animal-pick, dynamic from catalog) ---------- */
+.shape-pick {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+@media (max-width: 240px) {
+  .shape-pick { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- Mobile / short-screen picker strip ----------
+   MUST be declared AFTER the base .shape-pick rule above: both are
+   specificity (0,1,0), so the later one wins grid-template-columns.
+   The strip previously sat EARLIER in this file and silently lost to
+   the base repeat(3, 1fr); with the original 3-shape catalog the 3
+   explicit tracks masked it, but the 23-shape catalog produced a
+   broken hybrid (3 wide 1fr tracks + 20 narrow implicit tracks).
+   On phones/short windows the picker is a single horizontally
+   scrollable row so a long shape list can never inflate the strip
+   height and crush the canvas. */
+@media (max-width: 799px), (max-height: 500px) {
+  .shape-pick,
+  .category-pick {
+    grid-template-columns: none;
+    grid-template-rows: 1fr;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(64px, auto);
+    max-height: 92px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+  .shape-pick::-webkit-scrollbar,
+  .category-pick::-webkit-scrollbar { display: none; }
+}
+.shape-pick__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 3px solid var(--color-toolbar-border);
+  min-height: var(--size-tap-min);
+  transition: all var(--transition-fast);
+}
+.shape-pick__btn:hover { background: var(--color-bg-soft); }
+.shape-pick__btn.is-active {
+  border-color: var(--color-primary);
+  background: #fff0f0;
+  transform: scale(1.02);
+}
+.shape-pick__btn [aria-hidden="true"] {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+.shape-pick__name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+/* ---------- Offline banner ---------- */
+.offline-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: calc(var(--z-toast) + 10);
+  background: #2d2a32;
+  color: white;
+  padding: var(--space-3) var(--space-4);
+  padding-top: calc(var(--space-3) + var(--safe-top));
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  transform: translateY(-100%);
+  transition: transform var(--transition-base);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.offline-banner.is-visible {
+  transform: translateY(0);
+}
+.offline-banner[hidden] { display: flex; }
+.offline-banner__icon {
+  font-size: 1.75rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.offline-banner__body {
+  flex: 1;
+}
+.offline-banner__title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+.offline-banner__text {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+}

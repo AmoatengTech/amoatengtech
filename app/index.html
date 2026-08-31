@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" data-age="kid">
+<head>
+  <meta charset="UTF-8">
+  <!-- viewport-fit=cover lets us pad with env(safe-area-inset-*) on notched phones.
+       Zoom is NOT disabled (WCAG 1.4.4); canvases already use touch-action:none
+       so drawing is unaffected. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ffd84d">
+  <title>ColourInBook: Creative Arts for Kids</title>
+
+  <!-- CSS: layered, DRY. variables → base → layout → components → activities → age modes -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/activities.css">
+  <link rel="stylesheet" href="css/age-toddler.css">
+  <link rel="stylesheet" href="css/age-kid.css">
+</head>
+<body>
+
+  <!-- ============== WELCOME / AGE PICKER SCREEN ============== -->
+  <section id="welcome-screen" class="screen screen--welcome" data-screen="welcome">
+    <div class="welcome__card">
+      <h1 class="welcome__title">ColourInBook</h1>
+      <p class="welcome__subtitle">Pick your age to start painting!</p>
+
+      <div class="welcome__choices">
+        <button type="button" class="age-pick" data-age-pick="toddler">
+          <span class="age-pick__icon" aria-hidden="true">🧸</span>
+          <span class="age-pick__label">I'm 2 to 4</span>
+          <span class="age-pick__sub">Big buttons, easy tools</span>
+        </button>
+        <button type="button" class="age-pick" data-age-pick="kid">
+          <span class="age-pick__icon" aria-hidden="true">🎨</span>
+          <span class="age-pick__label">I'm 5 to 9</span>
+          <span class="age-pick__sub">More colours, more tools</span>
+        </button>
+      </div>
+
+      <p class="welcome__foot">Parent-friendly · No ads · Works offline<br>A software product of Amoateng Technologies Limited</p>
+    </div>
+  </section>
+
+  <!-- ============== MAIN APP SCREEN ============== -->
+  <section id="app-screen" class="screen screen--app" data-screen="app" hidden>
+
+    <!-- Top bar: activity switcher + parent corner -->
+    <header class="appbar">
+      <div class="appbar__brand">
+        <span class="appbar__logo" aria-hidden="true">🎨</span>
+        <span class="appbar__title">ColourInBook</span>
+      </div>
+
+      <nav class="appbar__activities" role="tablist" aria-label="Choose an activity">
+        <button type="button" class="activity-tab" data-activity-tab="coloring" role="tab" aria-selected="true" aria-label="Colouring">
+          <span class="activity-tab__icon" aria-hidden="true">🦒</span>
+          <span class="activity-tab__label">Colouring</span>
+        </button>
+        <button type="button" class="activity-tab" data-activity-tab="freedraw" role="tab" aria-selected="false" aria-label="Free Draw">
+          <span class="activity-tab__icon" aria-hidden="true">✏️</span>
+          <span class="activity-tab__label">Free Draw</span>
+        </button>
+        <button type="button" class="activity-tab" data-activity-tab="stickers" role="tab" aria-selected="false" aria-label="Stickers">
+          <span class="activity-tab__icon" aria-hidden="true">⭐</span>
+          <span class="activity-tab__label">Stickers</span>
+        </button>
+        <button type="button" class="activity-tab" data-activity-tab="musicpaint" role="tab" aria-selected="false" aria-label="Music Paint">
+          <span class="activity-tab__icon" aria-hidden="true">🎵</span>
+          <span class="activity-tab__label">Music Paint</span>
+        </button>
+      </nav>
+
+      <button type="button" class="appbar__parent" data-action="open-parent" aria-label="Parent corner">
+        <span aria-hidden="true">👪</span>
+        <span class="appbar__parent-label">Parent</span>
+      </button>
+    </header>
+
+    <!-- Main content: each activity mounts into its own panel -->
+    <main class="stage" id="stage">
+
+      <!-- ---------- Coloring activity ---------- -->
+      <article class="panel" data-activity-panel="coloring" hidden>
+        <aside class="toolbar toolbar--coloring">
+          <div class="toolbar__group" data-toolbar="shapes">
+            <h3 class="toolbar__heading">Pick a shape</h3>
+            <div class="shape-pick" data-shape-picker>
+              <!-- Shape buttons built dynamically by coloring.js -->
+            </div>
+          </div>
+
+          <div class="toolbar__group" data-toolbar="colors">
+            <h3 class="toolbar__heading">Paint colour</h3>
+            <div class="color-grid" data-coloring-colors></div>
+          </div>
+
+          <div class="toolbar__group" data-toolbar="size">
+            <h3 class="toolbar__heading">Spot size</h3>
+            <input type="range" min="6" max="120" value="40" data-coloring-size class="size-slider">
+          </div>
+
+          <div class="toolbar__group toolbar__group--actions">
+            <button type="button" class="btn btn--secondary" data-coloring-undo aria-label="Undo">
+              <span aria-hidden="true">↩️</span> <span class="btn__label">Undo</span>
+            </button>
+            <button type="button" class="btn btn--secondary" data-coloring-clear aria-label="Clear">
+              <span aria-hidden="true">🧹</span> <span class="btn__label">Clear</span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="canvas-wrap">
+          <div class="canvas canvas--coloring" data-coloring-canvas>
+            <!-- SVG injected by coloring.js -->
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- Free draw activity ---------- -->
+      <article class="panel" data-activity-panel="freedraw" hidden>
+        <aside class="toolbar toolbar--freedraw">
+          <div class="toolbar__group" data-toolbar="tools">
+            <h3 class="toolbar__heading">Tool</h3>
+            <div class="tool-pick">
+              <button type="button" class="tool-pick__btn is-active" data-freedraw-tool="brush" aria-pressed="true">
+                <span aria-hidden="true">🖌️</span> <span class="tool-pick__name">Brush</span>
+              </button>
+              <button type="button" class="tool-pick__btn" data-freedraw-tool="eraser" aria-pressed="false">
+                <span aria-hidden="true">🧽</span> <span class="tool-pick__name">Eraser</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="toolbar__group" data-toolbar="colors">
+            <h3 class="toolbar__heading">Colour</h3>
+            <div class="color-grid" data-freedraw-colors></div>
+          </div>
+
+          <div class="toolbar__group" data-toolbar="size">
+            <h3 class="toolbar__heading">Brush size</h3>
+            <input type="range" min="4" max="60" value="14" data-freedraw-size class="size-slider">
+          </div>
+
+          <div class="toolbar__group toolbar__group--actions">
+            <button type="button" class="btn btn--secondary" data-freedraw-undo aria-label="Undo">
+              <span aria-hidden="true">↩️</span> <span class="btn__label">Undo</span>
+            </button>
+            <button type="button" class="btn btn--secondary" data-freedraw-clear aria-label="Clear">
+              <span aria-hidden="true">🧹</span> <span class="btn__label">Clear</span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="canvas-wrap">
+          <canvas class="canvas canvas--freedraw" data-freedraw-canvas></canvas>
+        </div>
+      </article>
+
+      <!-- ---------- Sticker collage activity ---------- -->
+      <article class="panel" data-activity-panel="stickers" hidden>
+        <aside class="toolbar toolbar--stickers">
+          <div class="toolbar__group" data-toolbar="categories">
+            <h3 class="toolbar__heading">Stickers</h3>
+            <div class="category-pick" data-sticker-categories></div>
+          </div>
+
+          <div class="toolbar__group" data-toolbar="stickers">
+            <h3 class="toolbar__heading">Tap to add</h3>
+            <div class="sticker-grid" data-sticker-grid></div>
+          </div>
+
+          <div class="toolbar__group toolbar__group--actions">
+            <button type="button" class="btn btn--secondary" data-stickers-undo aria-label="Undo">
+              <span aria-hidden="true">↩️</span> <span class="btn__label">Undo</span>
+            </button>
+            <button type="button" class="btn btn--secondary" data-stickers-clear aria-label="Clear">
+              <span aria-hidden="true">🧹</span> <span class="btn__label">Clear</span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="canvas-wrap">
+          <canvas class="canvas canvas--stickers" data-stickers-canvas></canvas>
+        </div>
+      </article>
+
+      <!-- ---------- Music paint activity ---------- -->
+      <article class="panel" data-activity-panel="musicpaint" hidden>
+        <aside class="toolbar toolbar--musicpaint">
+          <div class="toolbar__group" data-toolbar="colors">
+            <h3 class="toolbar__heading">Each colour plays a note!</h3>
+            <div class="color-grid color-grid--music" data-music-colors></div>
+          </div>
+
+          <div class="toolbar__group" data-toolbar="size">
+            <h3 class="toolbar__heading">Brush size</h3>
+            <input type="range" min="8" max="80" value="30" data-music-size class="size-slider">
+          </div>
+
+          <div class="toolbar__group toolbar__group--actions">
+            <button type="button" class="btn btn--secondary" data-music-undo aria-label="Undo">
+              <span aria-hidden="true">↩️</span> <span class="btn__label">Undo</span>
+            </button>
+            <button type="button" class="btn btn--secondary" data-music-clear aria-label="Clear">
+              <span aria-hidden="true">🧹</span> <span class="btn__label">Clear</span>
+            </button>
+            <button type="button" class="btn btn--secondary" data-music-mute aria-pressed="false" aria-label="Sound on">
+              <span aria-hidden="true">🔊</span> <span class="btn__label">Sound on</span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="canvas-wrap">
+          <canvas class="canvas canvas--musicpaint" data-music-canvas></canvas>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Universal save bar -->
+    <footer class="savebar">
+      <button type="button" class="btn btn--secondary btn--print" data-action="print-picture" aria-label="Print my picture">
+        <span aria-hidden="true">🖨️</span> <span class="btn__label">Print</span>
+      </button>
+      <button type="button" class="btn btn--primary btn--save" data-action="save-png">
+        <span aria-hidden="true">💾</span> <span class="btn__label">Save my picture</span>
+      </button>
+    </footer>
+  </section>
+
+  <!-- ============== PARENT CORNER MODAL ============== -->
+  <div id="parent-modal" class="modal" data-modal="parent" hidden>
+    <div class="modal__backdrop" data-action="close-parent"></div>
+    <div class="modal__card">
+      <h2 class="modal__title">Parent Corner</h2>
+
+      <section class="modal__section">
+        <h3>Age mode</h3>
+        <p class="modal__hint">Changes button sizes and how many tools are shown.</p>
+        <div class="age-pick age-pick--inline">
+          <button type="button" class="age-pick__btn" data-age-set="toddler">
+            <span aria-hidden="true">🧸</span> Toddler (2 to 4)
+          </button>
+          <button type="button" class="age-pick__btn" data-age-set="kid">
+            <span aria-hidden="true">🎨</span> Kid (5 to 9)
+          </button>
+        </div>
+      </section>
+
+      <section class="modal__section">
+        <h3>About</h3>
+        <p>ColourInBook is a parent-friendly creative app for kids. No ads, no data collection, no internet needed. Drawings are saved only when you tap "Save my picture".</p>
+        <p>ColourInBook is a software product of <a href="https://www.amoatengtech.com" target="_blank" rel="noopener">Amoateng Technologies Limited</a>.</p>
+      </section>
+
+      <button type="button" class="btn btn--primary" data-action="close-parent">Close</button>
+    </div>
+  </div>
+
+  <!-- Toast for save feedback -->
+  <div id="toast" class="toast" data-toast hidden></div>
+
+  <!-- ============== JS: layered, DRY. core utils first, activities next, app boots last ============== -->
+  <script src="js/utils.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/shapes.js"></script>
+  <script src="js/offline.js"></script>
+  <script src="js/activities/coloring.js"></script>
+  <script src="js/activities/freedraw.js"></script>
+  <script src="js/activities/stickers.js"></script>
+  <script src="js/activities/musicpaint.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
