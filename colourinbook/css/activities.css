@@ -1,0 +1,75 @@
+/* ============================================================
+   activities.css
+   Per-activity specific styles that don't fit the shared
+   component classes. Kept small on purpose, because most activity
+   chrome reuses .toolbar / .canvas / .color-grid etc.
+   ============================================================ */
+
+/* ---------- Coloring: SVG-specific ---------- */
+.canvas--coloring {
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.canvas--coloring svg {
+  width: 100%;
+  height: auto;
+  max-width: 640px;
+  max-height: 640px;
+  /* Let the shared pinch-zoom helper (utils.js attachPinchZoom) own
+     two-finger gestures on the SVG; without this, iOS Safari would
+     hijack the pinch as a page zoom instead of canvas zoom. */
+  touch-action: none;
+}
+.canvas--coloring .pathBg,
+.canvas--coloring .animal__outline {
+  /* Offline-safe inline paintbrush cursor. Replaces the former CodePen S3
+     PNG (s.cdpn.io/85648/paintbrush.png) which returns HTTP 403 for ALL
+     users (verified 2026-08) and contradicted the "Works offline" promise
+     (index.html welcome foot + parent modal). An inline data URI makes zero
+     network requests. Hotspot 16 44 = bristle tip, so the pointer sits where
+     the paint spot lands. Engines without SVG-cursor support fall back to
+     `auto`, identical to the previous (broken) behavior, so no regression. */
+  cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="32" height="48" viewBox="0 0 32 48"%3E%3Crect x="13" y="2" width="7" height="22" rx="3" fill="%23ff9f43" stroke="%232d2a32" stroke-width="2"/%3E%3Crect x="11.5" y="23" width="10" height="8" rx="2" fill="%23c9cdd6" stroke="%232d2a32" stroke-width="2"/%3E%3Cpath d="M12 31 L21 31 L18 41 Q16 45.5 14 41 Z" fill="%23ff6b6b" stroke="%232d2a32" stroke-width="2" stroke-linejoin="round"/%3E%3C/svg%3E') 16 44, auto;
+}
+.canvas--coloring .group { pointer-events: none; }
+.canvas--coloring .animal { display: none; }
+.canvas--coloring .animal.is-active { display: block; }
+
+/* ---------- Free draw canvas ---------- */
+.canvas--freedraw {
+  background: white;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+/* ---------- Stickers canvas ---------- */
+.canvas--stickers {
+  background: white;
+  touch-action: none;
+}
+
+/* ---------- Music paint canvas + music color grid ---------- */
+.canvas--musicpaint {
+  background: #1a1a2e;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.color-grid--music .color-swatch {
+  position: relative;
+}
+.color-grid--music .color-swatch.is-active::after {
+  content: "♪";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* ---------- Parent modal: only show age-set buttons (hide nothing in CSS for now) ---------- */

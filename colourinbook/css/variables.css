@@ -1,0 +1,116 @@
+/* ============================================================
+   variables.css
+   Single source of truth for colors, spacing, radii, sizes.
+   All other CSS files reference these tokens.
+   Age-mode overrides also live here so the rest of the CSS
+   stays age-agnostic.
+   ============================================================ */
+
+:root {
+  /* ---- Brand palette (playful, cartoonish) ---- */
+  --color-bg:          #fff8e7;   /* warm cream background */
+  --color-bg-soft:     #fff3d6;
+  --color-surface:     #ffffff;
+  --color-surface-2:   #fff6e0;
+  --color-ink:         #2d2a32;   /* near-black for text */
+  --color-ink-soft:    #5a5763;
+  --color-ink-mute:    #8a8893;
+
+  --color-primary:     #ff6b6b;   /* coral red */
+  --color-primary-dk:  #e85a5a;
+  --color-accent:      #ffd84d;   /* sunny yellow */
+  --color-accent-dk:   #f5c518;
+  --color-success:     #4ecdc4;   /* teal */
+  --color-info:        #6aa9ff;   /* sky blue */
+  --color-warn:        #ff9f43;
+
+  /* ---- Toolbar / canvas chrome ---- */
+  --color-toolbar-bg:  #ffffff;
+  --color-toolbar-border: #ffe9a8;
+  --color-canvas-bg:   #ffffff;
+  --color-canvas-shadow: 0 0.4rem 1.2rem rgba(0,0,0,0.12);
+
+  /* ---- Spacing scale ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* ---- Radii ---- */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.4rem;
+  --radius-pill: 999px;
+
+  /* ---- Typography ---- */
+  --font-stack: "Baloo 2", "Fredoka", "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* ---- Sizes (age-mode-tunable) ---- */
+  --size-tap-min:      44px;     /* min touch target */
+  --size-btn-h:        56px;
+  --size-btn-pad-x:    1.25rem;
+  --size-btn-font:     1rem;
+  --size-icon:         1.5rem;
+  --size-color-swatch: 48px;
+  --size-appbar-h:     72px;
+  --size-savebar-h:    72px;
+
+  /* ---- Layout ---- */
+  --layout-max-width:  1400px;
+  --layout-toolbar-w:  280px;
+  /* Colouring desktop (≥1200px) two-column toolbox: "Pick a shape"
+     LEFT + "Paint colour"/"Spot size"/Undo/Clear RIGHT. Two tracks
+     inside 560px give each column the same 258px content width the
+     single 280px toolbar had, so the 6-col colour grid (244px min)
+     and the 3-col shape grid keep their exact current proportions. */
+  --layout-toolbar-2col-w: 560px;
+
+  /* ---- Motion ---- */
+  --transition-fast:   120ms ease;
+  --transition-base:   200ms ease;
+
+  /* ---- Z-index scale ---- */
+  --z-appbar:   100;
+  --z-savebar:  100;
+  --z-modal:    1000;
+  --z-toast:    2000;
+
+  /* ---- Device safe areas (notched phones; requires viewport-fit=cover) ----
+     Single source of truth so every file pads consistently. */
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ---- Age mode: TODDLER (2-4) ----
+   Big tap targets, fewer tools, larger text/icons. */
+[data-age="toddler"] {
+  --size-btn-h:        80px;
+  --size-btn-pad-x:    2rem;
+  --size-btn-font:     1.25rem;
+  --size-icon:         2.25rem;
+  --size-color-swatch: 72px;
+  --size-appbar-h:     96px;
+  --size-savebar-h:    88px;
+  --size-tap-min:      64px;
+  --layout-toolbar-w:  220px;
+  --layout-toolbar-2col-w: 440px;
+}
+
+/* ---- Age mode: KID (5-9) ----
+   Default sizes already tuned for kid use. */
+[data-age="kid"] {
+  /* Uses :root defaults */
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+  }
+}

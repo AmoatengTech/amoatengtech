@@ -1,0 +1,92 @@
+/* ============================================================
+   age-toddler.css
+   Overrides applied when <html data-age="toddler">.
+   Keeps CSS variable overrides in variables.css; this file
+   handles structural tweaks (hide labels, simplify grids).
+   Toddler mode: simpler toolbars, fewer colors shown.
+   ============================================================ */
+
+[data-age="toddler"] .activity-tab__label { display: none; }
+[data-age="toddler"] .toolbar__heading { display: none; }
+[data-age="toddler"] .btn__label { display: none; }
+[data-age="toddler"] .appbar__parent-label { display: none; }
+
+/* Picker text labels are icon-only too, like every other toddler control.
+   FIX: the 3-column shape grid's min-content width ("Giraffe/Flounder/Snail"
+   text + button chrome ≈ 236px) exceeded the 220px toddler toolbar's 188px
+   content box, so the desktop toolbar (overflow-x:hidden) clipped the
+   "Snail" button by 16px. Hiding the labels matches the established
+   icon-only toddler design; aria-label + title (coloring.js
+   buildShapePicker) keep the buttons screen-reader named. */
+[data-age="toddler"] .shape-pick__name,
+[data-age="toddler"] .tool-pick__name,
+[data-age="toddler"] .category-pick__name { display: none; }
+
+/* Toddler: bigger icons in tabs.
+   FIX: the first selector below targeted .animal-pick__btn, a class that
+   no longer exists in the DOM (the shape picker builds .shape-pick__btn,
+   see coloring.js), so the 2.5rem enlargement never applied to coloring
+   shapes. Retargeted to the live class. */
+[data-age="toddler"] .activity-tab__icon { font-size: 2.5rem; }
+[data-age="toddler"] .shape-pick__btn [aria-hidden="true"],
+[data-age="toddler"] .tool-pick__btn [aria-hidden="true"],
+[data-age="toddler"] .category-pick__btn [aria-hidden="true"] {
+  font-size: 2.5rem;
+}
+
+/* Toddler: emoji-only shape buttons in 2 columns, but ONLY where the
+   mobile strip rule (components.css @media (max-width:799px), (max-height:500px))
+   is not active. On phones/short windows the shape picker is a single
+   horizontally scrollable strip: the previous unscoped 2-col rule
+   overrode grid-template-columns there while the strip still owned
+   grid-auto-flow:column, producing a broken hybrid (2 wide tracks +
+   N narrow implicit tracks in one row) that the 23-shape catalog made
+   obvious. Desktop toddler keeps the wrapped 2-col grid. */
+@media (min-width: 800px) and (min-height: 501px) {
+  [data-age="toddler"] .shape-pick {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Toddler: 2-column color grid (bigger swatches).
+   FIX: was repeat(3, 1fr), but 3 swatches × 64px min (--size-tap-min) +
+   2 × 8px gaps = 208px > 188px content box → the 3rd column was clipped
+   8px by the desktop toolbar's overflow-x:hidden. 2 columns need only
+   136px and make each swatch ~90px, which is better for toddlers. */
+[data-age="toddler"] .color-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Toddler: keep swatches big even though kid mode shrunk them */
+[data-age="toddler"] .color-swatch {
+  min-width: var(--size-tap-min);
+  min-height: var(--size-tap-min);
+}
+
+/* Toddler: hide sticker category picker (just show one big happy grid).
+   The category picker stays in the DOM so JS can still drive it, but
+   we collapse it visually. */
+[data-age="toddler"] [data-toolbar="categories"] {
+  display: none;
+}
+
+/* Toddler: simplify savebar copy */
+[data-age="toddler"] .btn--save .btn__label::before {
+  content: "Save picture";
+}
+[data-age="toddler"] .btn--save .btn__label {
+  font-size: 0; /* hide original text */
+}
+[data-age="toddler"] .btn--save .btn__label::before {
+  font-size: 1.15rem;
+}
+
+/* OWNER DECISION (2026-08): toddlers KEEP the eraser, mute and all
+   action buttons. The previous "hide the eraser (too confusing)" rule
+   was removed; the owner explicitly wants toddlers to have undo/erase
+   like older kids (and Undo/Clear were only ever label-hidden, never
+   removed). The mute toggle is likewise visible again: mute state is
+   now persisted, so a hidden toggle would strand a muted reload with
+   no way to unmute in toddler mode. */
+/* [data-freedraw-tool="eraser"] and [data-music-mute] are NO LONGER
+   hidden in toddler mode. */
