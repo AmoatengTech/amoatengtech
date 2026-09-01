@@ -23,7 +23,7 @@
     clear(root);
 
     var landing = store.getLanding();
-    var featured = store.getFeaturedProducts();
+    var featured = store.getFeaturedProducts() || [];
     var currency = store.getCurrency();
 
     root.appendChild(
@@ -63,14 +63,16 @@
   function renderHero(landing) {
     return el('section', { class: 'landing-hero' }, [
       el('div', { class: 'hero-copy' }, [
-        el('p', { class: 'muted', style: { fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' } }, 'Morcenzs by Morbi'),
-        el('h1', { class: 'serif' }, [
-          el('span', {}, landing.hero_title ? landing.hero_title.split(',').map(function(part, i) {
-            if (i === landing.hero_title.split(',').length - 1) return [', ', el('span', { class: 'gold' }, part.trim())];
-            return [part, ', '];
-          }).reduce(function(a, b) { return a.concat(b); }, []) : 'Luxury Scents Redefined.'
-          )
-        ]),
+        el('p', {
+          class: 'muted',
+          style: {
+            fontSize: '14px',
+            letterSpacing: '2px',
+            textTransform: 'uppercase',
+            marginBottom: '12px'
+          }
+        }, 'Morcenzs by Morbi'),
+        el('h1', { class: 'serif' }, landing.hero_title || 'Luxury Scents Redefined'),
         el('p', {}, landing.hero_subtitle || 'Handcrafted perfumes and accessories for those who leave an impression.'),
         el('div', { class: 'hero-cta' }, [
           el('button', {
@@ -79,18 +81,29 @@
           }, 'Browse Collection'),
           el('button', {
             class: 'btn-md outline',
-            onclick: function () { document.querySelector('.landing-featured').scrollIntoView({ behavior: 'smooth' }); }
+            onclick: function () {
+              var target = document.querySelector('.landing-featured');
+              if (target) target.scrollIntoView({ behavior: 'smooth' });
+            }
           }, 'View Featured')
         ])
       ]),
       el('div', { class: 'hero-art' }, [
         el('div', { class: 'hero-card' }, [
-          el('div', { style: {
-            width: '100%', height: '200px',
-            background: 'linear-gradient(135deg, #1a1a1a, #2D8B4E)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
-          } }, [
-            el('i', { class: 'fas fa-flask', style: { fontSize: '64px', color: '#D4AF37' } })
+          el('div', {
+            style: {
+              width: '100%',
+              height: '200px',
+              background: 'linear-gradient(135deg, #1a1a1a, #2D8B4E)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }
+          }, [
+            el('i', {
+              class: 'fas fa-flask',
+              style: { fontSize: '64px', color: '#D4AF37' }
+            })
           ]),
           el('div', { class: 'hero-card-body' }, [
             el('h3', { class: 'hero-card-name' }, 'Morcenzs Signature'),
@@ -115,12 +128,20 @@
         el('div', { style: { textAlign: 'center' } }, [
           el('div', {
             style: {
-              width: '280px', height: '350px', margin: '0 auto', borderRadius: '14px',
+              width: '280px',
+              height: '350px',
+              margin: '0 auto',
+              borderRadius: '14px',
               background: 'linear-gradient(180deg, #D4AF37 0%, #2D8B4E 100%)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }
           }, [
-            el('i', { class: 'fas fa-user', style: { fontSize: '80px', color: '#000000', opacity: 0.6 } })
+            el('i', {
+              class: 'fas fa-user',
+              style: { fontSize: '80px', color: '#000000', opacity: 0.6 }
+            })
           ])
         ])
       ])
@@ -135,11 +156,14 @@
       return el('div', { class: 'menu' }, [
         el('div', {
           style: {
-            width: '100%', height: '200px',
+            width: '100%',
+            height: '200px',
             background: p.imagePath
               ? 'url(' + p.imagePath + ') center/cover'
               : 'linear-gradient(135deg, #1a1a1a, #222222)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }
         }, p.imagePath
           ? null
@@ -152,8 +176,10 @@
         ])
       ]);
     }) : [
-      el('p', { class: 'muted', style: { gridColumn: '1 / -1', textAlign: 'center', padding: '40px 0' } },
-        'No products yet. Add some in the admin panel.')
+      el('p', {
+        class: 'muted',
+        style: { gridColumn: '1 / -1', textAlign: 'center', padding: '40px 0' }
+      }, 'No products yet. Add some in the admin panel.')
     ];
 
     return el('section', { class: 'landing-featured' }, [
