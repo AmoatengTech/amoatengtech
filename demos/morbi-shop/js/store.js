@@ -20,7 +20,7 @@
     return {
       currency: DEFAULT_CURRENCY,
       landing: {
-        hero_title: 'Luxury Scents.',
+        hero_title: 'Luxury Scents Redefined.',
         hero_subtitle: 'Morcenzs is curated collection of luxury perfumes and accessories for those who want to leave an impression.',
         about_heading: 'About Morbi',
         about_text_1: 'Morbi is a creative entrepreneur and the founder of Morcenzs, a homegrown fragrance brand born from a passion for self-expression through scent.',
