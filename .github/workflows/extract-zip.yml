@@ -12,12 +12,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Extract ZIP file
+      - name: Extract ZIP file to demos/morbi-shop-v1 directory
         run: |
-          # Find all .zip files and extract them
+          # Find all .zip files and extract them to demos/morbi-shop-v1/ directory
           for zipfile in *.zip; do
             if [ -f "$zipfile" ]; then
-              unzip -o "$zipfile" -d ./
+              mkdir -p demos/morbi-shop-v1
+              unzip -o "$zipfile" -d demos/morbi-shop-v1/
               rm "$zipfile"
             fi
           done
@@ -27,5 +28,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git commit -m "Extract ZIP file contents" || echo "No changes to commit"
+          git commit -m "Extract morbi-shop-v1.zip to demos/morbi-shop-v1 directory" || echo "No changes to commit"
           git push
