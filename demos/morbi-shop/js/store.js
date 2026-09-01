@@ -21,10 +21,10 @@
       currency: DEFAULT_CURRENCY,
       landing: {
         hero_title: 'Luxury Scents, Redefined.',
-        hero_subtitle: 'Morcenzs — handcrafted perfumes and accessories for those who leave an impression.',
+        hero_subtitle: 'Morcenzs is curated collection of luxury perfumes and accessories for those who want to leave an impression.',
         about_heading: 'About Morbi',
         about_text_1: 'Morbi is a creative entrepreneur and the founder of Morcenzs, a homegrown fragrance brand born from a passion for self-expression through scent.',
-        about_text_2: 'Every Morcenzs bottle is curated with care — from bold, attention-grabbing signatures to subtle everyday essentials.',
+        about_text_2: 'Every Morcenzs bottle is curated with care from bold, attention-grabbing perfume signatures to subtle everyday essentials.',
         featured_heading: 'Featured Scents',
         featured_sub: 'A selection from the Morcenzs collection. Visit the store for the full range.',
         footer_text: 'Morcenzs by Morbi. All rights reserved.'
