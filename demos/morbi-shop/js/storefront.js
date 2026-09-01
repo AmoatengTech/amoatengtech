@@ -80,7 +80,7 @@
     return el('header', { class: 'storefront-header' }, [
       el('div', {}, [
         el('div', { class: 'storefront-brand' }, 'Morcenzs'),
-        el('div', { class: 'storefront-tagline' }, 'Luxury Scents, Redefined.')
+        el('div', { class: 'storefront-tagline' }, 'Luxury Scents.')
       ]),
       el('div', {}, [
         el('button', {
