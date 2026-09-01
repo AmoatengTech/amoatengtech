@@ -110,7 +110,7 @@
         el('div', {}, [
           el('h2', { class: 'serif' }, landing.about_heading || 'About Morbi'),
           el('p', {}, landing.about_text_1 || 'Morbi is a creative entrepreneur and the founder of Morcenzs.'),
-          el('p', {}, landing.about_text_2 || 'Every Morcenzs bottle is curated with care — from bold signatures to subtle everyday essentials.')
+          el('p', {}, landing.about_text_2 || 'Every Morcenzs bottle is curated with care from bold signatures to subtle everyday essentials.')
         ]),
         el('div', { style: { textAlign: 'center' } }, [
           el('div', {
