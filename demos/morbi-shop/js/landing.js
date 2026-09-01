@@ -68,7 +68,7 @@
           el('span', {}, landing.hero_title ? landing.hero_title.split(',').map(function(part, i) {
             if (i === landing.hero_title.split(',').length - 1) return [', ', el('span', { class: 'gold' }, part.trim())];
             return [part, ', '];
-          }).reduce(function(a, b) { return a.concat(b); }, []) : 'Luxury Scents, Redefined.'
+          }).reduce(function(a, b) { return a.concat(b); }, []) : 'Luxury Scents Redefined.'
           )
         ]),
         el('p', {}, landing.hero_subtitle || 'Handcrafted perfumes and accessories for those who leave an impression.'),
